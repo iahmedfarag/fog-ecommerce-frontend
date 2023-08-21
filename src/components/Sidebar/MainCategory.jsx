@@ -6,23 +6,16 @@ import { styled } from 'styled-components'
 export default function MainCategory({ mainCategory, categories, subCategories }) {
     const [mainCategoryHovered, setMainCategoryHovered] = useState(false)
 
-
-
+    const filteredCategories = categories.filter((cat) => cat.mainCategory == mainCategory._id)
 
     return (
         <Wrapper className="mainCategory">
-            <a href="/" className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
+            <a href={`/${mainCategory.slug}`} className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
                 <div className="icon"><img src={mainCategory.icon.secure_url} alt="" /></div>
                 <p className="text">{mainCategory.name}</p>
                 <div className="more flex"><SlArrowRight /></div>
             </a>
-            {
-                categories.map(cat => {
-                    if (cat?.mainCategory === mainCategory?._id) {
-                        return <Categories key={cat._id} category={cat} subCategories={subCategories} mainCategoryHovered={mainCategoryHovered} />
-                    }
-                })
-            }
+            <Categories mainCategorySlug={mainCategory.slug} filteredCategories={filteredCategories} subCategories={subCategories} mainCategoryHovered={mainCategoryHovered} />
         </Wrapper>
     )
 }
@@ -43,7 +36,7 @@ const Wrapper = styled.div`
                     width: 40px;
                     margin-left: 20px;
                     img {
-                        width: 24px;
+                        width: 20px;
                     }
                 }
                 .text {
@@ -51,6 +44,7 @@ const Wrapper = styled.div`
                     white-space: nowrap; //
                     opacity: 0;
                     transition: 0.3s; // transition
+                    font-size: 15px;
                 }
                 .more {
                     position: absolute;
@@ -64,5 +58,4 @@ const Wrapper = styled.div`
 
             
             }
-
 `

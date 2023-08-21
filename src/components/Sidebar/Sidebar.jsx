@@ -115,7 +115,7 @@ const Wrapper = styled.aside`
             width: 40px;
             font-size: 22px;
             /* background-color: red; */
-            margin-left: 10px; // center the svg
+            margin-left: 9px; // center the svg
         }
         .text {
             white-space: nowrap; // 

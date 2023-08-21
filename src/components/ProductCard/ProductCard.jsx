@@ -39,29 +39,29 @@ export default function ProductCard({ pHot, pNew }) {
             <Details />
             <Status pHot={pHot} pNew={pNew} />
             <Bar />
+
         </Wrapper>
     )
 }
 
 
 const Wrapper = styled.article`
+    position: relative;
     width: calc(100% / 5 - (40px / 5));
-    /* border-radius: 10px; */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding: 10px;
     transition: all .5s ease;
     background-color: var(--white);
-    position: relative;
-    /* overflow: hidden; */
-    z-index: 1;
+    padding: 10px;
+    overflow: hidden;
     &:hover {
         transform: scale(1.01);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;   
+        overflow: visible;
+        
         .details {
             opacity: 1;
             visibility: visible;
-            top: 100%;
         }
         .bar {
             right: 15px;
