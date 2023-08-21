@@ -5,13 +5,17 @@ import { PiUser } from "react-icons/pi"
 import Logo from './Logo'
 import SearchForm from './SearchForm'
 import Features from './Features'
+import { openSidebar, closeSidebar } from '../../redux/productsSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 export default function FirstNavbar() {
+    const dispatch = useDispatch()
+
     return (
         <Wrapper>
             <div className="container">
-                <button className='menuBtn flex'><RxHamburgerMenu /></button>
+                <button className='menuBtn flex' onClick={() => dispatch(openSidebar())}><RxHamburgerMenu /></button>
                 <Logo />
                 <SearchForm />
                 <Features />

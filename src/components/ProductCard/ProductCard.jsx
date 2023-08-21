@@ -46,17 +46,22 @@ export default function ProductCard({ pHot, pNew }) {
 
 const Wrapper = styled.article`
     width: calc(100% / 5 - (40px / 5));
-    border-radius: 10px;
+    /* border-radius: 10px; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     padding: 10px;
     transition: all .5s ease;
+    background-color: var(--white);
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 1;
     &:hover {
         transform: scale(1.01);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;   
         .details {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            top: 100%;
         }
         .bar {
             right: 15px;

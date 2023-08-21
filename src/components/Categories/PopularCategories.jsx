@@ -58,6 +58,7 @@ export default function PopularCategories() {
         speed: 500,
         slidesToShow: 7,
         slidesToScroll: 7,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 992,
@@ -107,11 +108,16 @@ const Wrapper = styled.section`
 
         }
         .categories {
+            margin: 0;
             .slick-slider {
+                margin: 0;
                 .slick-list {
+                    margin: 0;
                     .slick-track {
+                        margin: 0;
                         /* margin: 0 -30px; */
                         .slick-slide{
+                            margin: 0;
                             padding: 0 5px;
                         }
                     }

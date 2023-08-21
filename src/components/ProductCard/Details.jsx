@@ -10,29 +10,32 @@ const Line = ({ pKey, pValue }) => {
 export default function Details() {
     return (
         <Wrapper className="details">
-            <div className="sep"></div>
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
-            <Line pKey={"Brand"} pValue={"Apple"} />
+            <div className="wrapper">
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+                <Line pKey={"Brand"} pValue={"Apple"} />
+            </div>
         </Wrapper>
     )
 }
 
-const Wrapper = styled.div`
-    display: none;
+const Wrapper = styled.div` 
     transition: all .5s ease;
-    
-    .sep {
-        width: 100%;
-        height: 1px;
-        background-color: grey;
-        margin: 10px 0;
-    }
+    position: absolute;
+    background-color: var(--white);
+    width: 100%;
+    left: 0;
+    top: calc(100% - 10px);
+    opacity: 0;
+    visibility: hidden;
+
+    padding: 10px;
+
     .line {
         gap: 6px;
         margin: 5px 0;

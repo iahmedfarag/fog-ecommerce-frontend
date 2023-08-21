@@ -24,6 +24,7 @@ body {
   font-family: "Lexend Deca", sans-serif;
   background-color: var(--white-6);
   height: 5000px;
+  z-index: 1;
 }
 
 button {
@@ -47,11 +48,18 @@ ul {
 /* container */
 .container {
   max-width: 1400px;
-  padding: 0 30px;
+  padding-left: 80px;
+  padding-right: 20px;
   margin-right: auto;
   margin-left: auto;
 }
 
+@media(max-width: 992px) {
+  .container {
+    padding: 0 15px;
+    
+  }
+}
 @media(max-width: 768px) {
   .container {
     padding: 0 15px;
@@ -61,7 +69,6 @@ ul {
 @media (max-width: 576px) {
   .container {
     padding: 0 10px;
-
   }
 }
 
