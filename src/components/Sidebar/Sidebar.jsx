@@ -2,8 +2,7 @@ import { styled } from "styled-components"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { closeSidebar, getCategories, getMainCategories, getSubCategories, openSidebar } from "../../redux/productsSlice"
-import Categories from "./Categories"
+import { closeSidebar, openSidebar } from "../../redux/productsSlice"
 import MainCategory from "./MainCategory"
 
 export default function Sidebar() {
@@ -29,11 +28,6 @@ export default function Sidebar() {
     })
 
 
-    useEffect(() => {
-        dispatch(getMainCategories())
-        dispatch(getCategories())
-        dispatch(getSubCategories())
-    }, [dispatch])
 
     if (isLoading) {
         return <h1>loading....</h1>

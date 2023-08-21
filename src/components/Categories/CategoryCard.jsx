@@ -1,19 +1,18 @@
 import { styled } from "styled-components"
 
-export default function CategoryCard({ category }) {
+export default function CategoryCard({ subCategory }) {
     return (
         <Wrapper>
-            <a href="/">
-
-                <div className="imgWrapper">
-                    <img src={category.image} alt="category-image" />
-                </div>
-                <div className="content">
-                    <h4>{category.title}</h4>
-                    <p>{category.count} products</p>
-                </div>
-
-            </a>
+            <div>
+                <a href={`/${subCategory.slug}`} draggable="false">
+                    <div className="imgWrapper">
+                        <img draggable="false" src={subCategory.image.secure_url} alt="category-image" />
+                    </div>
+                    <div className="content">
+                        <h4>{subCategory.name}</h4>
+                    </div>
+                </a>
+            </div>
         </Wrapper>
     )
 }
@@ -27,12 +26,14 @@ const Wrapper = styled.article`
             position: relative;
             overflow: hidden;
             border-radius: 10px;
-
+            margin-bottom: 10px;
             img {
                 width: 100%;
                 transition: all .5s ease;
                 object-fit: cover;
                 pointer-events: none;
+                user-select: none;
+                
             }
         }
         .content {
@@ -42,6 +43,7 @@ const Wrapper = styled.article`
                 font-weight: 400;
                 margin-top: 5px;
                 margin-bottom: 2px;
+                text-transform: capitalize;
             }
             p {
                 font-size: 14px;

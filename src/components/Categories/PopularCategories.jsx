@@ -1,57 +1,17 @@
-import { nanoid } from "nanoid"
 import { styled } from "styled-components"
-import img from "../../assets/mobile-phones-apple-iphone-200x200.jpg"
-import img2 from "../../assets/Laptops-1-200x200.jpg"
-import img3 from "../../assets/motherboards-200x200.jpg"
 import CategoryCard from "./CategoryCard"
 import Slider from "react-slick"
+import { useDispatch, useSelector } from "react-redux"
 
-const categories = [
-    {
-        id: nanoid(5),
-        title: "Apple IPhone",
-        count: 8,
-        image: img
-    },
-    {
-        id: nanoid(5),
-        title: "Motherboards",
-        count: 8,
-        image: img3
-    },
-    {
-        id: nanoid(5),
-        title: "Headsets",
-        count: 8,
-        image: img2
-    },
-    {
-        id: nanoid(5),
-        title: "Motherboards",
-        count: 8,
-        image: img3
-    },
-    {
-        id: nanoid(5),
-        title: "Headsets",
-        count: 8,
-        image: img2
-    },
-    {
-        id: nanoid(5),
-        title: "Motherboards",
-        count: 8,
-        image: img3
-    },
-    {
-        id: nanoid(5),
-        title: "Headsets",
-        count: 8,
-        image: img2
-    },
-]
+
 
 export default function PopularCategories() {
+    const { subCategories } = useSelector((state) => state.products)
+    const dispatch = useDispatch()
+
+    const featuredSubCategories = subCategories.filter((item) => item.featured)
+
+
     const settings = {
         dots: false,
         infinite: true,
@@ -90,8 +50,8 @@ export default function PopularCategories() {
                 <h2>Popular Categories</h2>
                 <div className="categories">
                     <Slider {...settings}>
-                        {categories.map(category => {
-                            return <CategoryCard key={category.id} category={category} />
+                        {featuredSubCategories.map(subCategory => {
+                            return <CategoryCard key={subCategory._id} subCategory={subCategory} />
                         })}
                     </Slider>
                 </div>
@@ -105,7 +65,7 @@ const Wrapper = styled.section`
 
     .container {
         h2 {
-
+            margin-bottom: 25px;
         }
         .categories {
             margin: 0;
