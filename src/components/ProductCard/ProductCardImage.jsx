@@ -2,12 +2,12 @@ import { styled } from "styled-components"
 import img from "../../assets/apple-macbook-pro-16-silver-1.jpg"
 
 
-export default function ProductCardImage() {
+export default function ProductCardImage({ product }) {
     return (
         <Wrapper>
-            <div className="imgWrapper">
-                <img src={img} alt="product-image" />
-            </div>
+            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/${product.slug}`} draggable="false" className="imgWrapper">
+                <img src={product.mainImage.secure_url} draggable="false" alt="product-image" />
+            </a>
         </Wrapper>
     )
 }

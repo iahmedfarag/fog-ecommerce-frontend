@@ -6,20 +6,21 @@ import Bar from "./Bar"
 import Status from "./Status"
 import { AiOutlineCheck } from "react-icons/ai"
 import AddToCartBtn from "./AddToCartBtn"
-export default function ProductCard({ pHot, pNew }) {
-    // console.log(props)
+export default function ProductCard({ product }) {
+
+
     return (
         <Wrapper>
-            <ProductCardImage />
-            <h4>Apple MacBook Pro 16 M1</h4>
-            <p>Apple MacBook</p>
+            <ProductCardImage product={product} />
+            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/${product.slug}`} className="title">{product.name}</a>
+            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/`} className="subCategory">{product.subCategory.name}</a>
             <Rate />
             <div className="ava">
                 <div className="flex"><AiOutlineCheck /></div>
                 <p>In stock</p>
             </div>
             <div className="info">
-                <p className="price">$ 2.499.00</p>
+                <p className="price">$ {product.priceAfterDiscount}.00</p>
                 <div className="colors flex">
                     <div className="color">
                         <button></button>
@@ -33,11 +34,11 @@ export default function ProductCard({ pHot, pNew }) {
             </div>
             <AddToCartBtn />
             <div className="code">
-                <p>SKU: <span>11234</span></p>
+                <p>SKU: <span>{product.serial}</span></p>
             </div>
 
-            <Details />
-            <Status pHot={pHot} pNew={pNew} />
+            <Details product={product} />
+            <Status product={product} />
             <Bar />
 
         </Wrapper>
@@ -68,14 +69,19 @@ const Wrapper = styled.article`
         }
     }
 
-    h4 {
+    .title {
         margin-bottom: 5px;
         font-weight: 500;
+        margin-bottom: 5px;
+        display: block;
+        font-size: 15px;
     }
 
-    > p {
+    .subCategory{
         color: grey;
+        font-size: 14px;
         margin-bottom: 10px;
+        display: block;
     }
 
     .ava {

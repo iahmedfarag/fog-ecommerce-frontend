@@ -1,6 +1,7 @@
 import { styled } from "styled-components"
 
 export default function CategoryCard({ subCategory }) {
+    // * TODO change url
     return (
         <Wrapper>
             <div>
@@ -10,6 +11,7 @@ export default function CategoryCard({ subCategory }) {
                     </div>
                     <div className="content">
                         <h4>{subCategory.name}</h4>
+                        <p>{subCategory.productsCount} products</p>
                     </div>
                 </a>
             </div>

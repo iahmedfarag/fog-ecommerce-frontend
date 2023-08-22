@@ -6,21 +6,19 @@ const Line = ({ pKey, pValue }) => {
         <p className="value">{pValue}</p>
     </div>
 }
+// new Date(<your-date-object>.toDateString());
 
-export default function Details() {
+export default function Details({ product }) {
+
+
     return (
         <Wrapper className="details">
             <div className="wrapper">
                 <div className="list">
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-                    <Line pKey={"Brand"} pValue={"Apple"} />
-
+                    <Line pKey={"brand"} pValue={product.brand} />
+                    <Line pKey={"model"} pValue={product.model} />
+                    <Line pKey={"colors"} pValue={product.colors.toString()} />
+                    <Line pKey={"release year"} pValue={product.releaseYear.split("T")[0]} />
                 </div>
 
             </div>

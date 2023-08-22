@@ -9,7 +9,7 @@ export default function PopularCategories() {
     const { subCategories } = useSelector((state) => state.products)
     const dispatch = useDispatch()
 
-    const featuredSubCategories = subCategories.filter((item) => item.featured)
+    const popularSubCategories = subCategories.filter((item) => item.featured)
 
 
     const settings = {
@@ -50,7 +50,7 @@ export default function PopularCategories() {
                 <h2>Popular Categories</h2>
                 <div className="categories">
                     <Slider {...settings}>
-                        {featuredSubCategories.map(subCategory => {
+                        {popularSubCategories.map(subCategory => {
                             return <CategoryCard key={subCategory._id} subCategory={subCategory} />
                         })}
                     </Slider>

@@ -1,16 +1,16 @@
 import { styled } from "styled-components"
 
-export default function Status({ pHot, pNew, pDiscount }) {
+export default function Status({ product }) {
     return (
         <Wrapper className="status">
             {
-                pHot ? <div className="box hot">Hot</div> : ""
+                product.trendy ? <div className="box hot">Hot</div> : ""
             }
             {
-                pNew ? <div className="box new">New</div> : ""
+                product.new ? <div className="box new">New</div> : ""
             }
             {
-                pDiscount ? <div className="box discount">-10%</div> : ""
+                product.discountPercentegeAmount ? <div className="box discount">-{product.discountPercentegeAmount}%</div> : ""
             }
         </Wrapper>
     )

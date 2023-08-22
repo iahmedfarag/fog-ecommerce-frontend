@@ -7,6 +7,7 @@ const initialState = {
     categories: [],
     subCategories: [],
     products: [],
+
     isLoading: true,
     error: null,
     sidebar: false

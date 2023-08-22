@@ -1,22 +1,29 @@
 import { styled } from "styled-components"
 import { MdOutlineArrowForwardIos } from "react-icons/md"
 import ProductCard from "./ProductCard/ProductCard"
+import { useSelector } from "react-redux"
+
 export default function BestOffers() {
+    const { products } = useSelector((state) => state.products)
+
+
+    const bestProducts = products.filter((item) => item.bestOffer)
+
     return (
         <Wrapper>
             <div className="container">
                 <header>
-                    <h2>The Best Offfers</h2>
+                    <h2>The Best Offers</h2>
                     <a href="/" className="flex">
                         <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
                     </a>
                 </header>
                 <div className="products">
-                    <ProductCard />
-                    <ProductCard pHot={true} pNew={true} />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {
+                        bestProducts.map((product) => {
+                            return <ProductCard key={product._id} product={product} />
+                        })
+                    }
                 </div>
             </div>
         </Wrapper>
