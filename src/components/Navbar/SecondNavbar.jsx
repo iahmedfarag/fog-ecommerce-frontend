@@ -62,6 +62,7 @@ const Wrapper = styled.div`
 
             .currency {
                 position: relative;
+                z-index:55; 
                 button {
                     font-weight: bold;
                     transition: 0.1s;

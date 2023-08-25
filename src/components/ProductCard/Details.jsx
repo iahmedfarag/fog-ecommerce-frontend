@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     position: relative;
     opacity: 0;
     visibility: hidden;
-
+    z-index: 55;
     /* padding: 10px; */
     .wrapper {
         position: absolute;
@@ -42,10 +42,13 @@ const Wrapper = styled.div`
         background-color: var(--white);
         padding: 10px;
         padding-top: 0;
-        height: 105px;
-        overflow-y: scroll;
+        height: 106px;
+        /* overflow-y: scroll; */
+        z-index: 55;
+
         .list {
             position: relative;
+            z-index: 55;
             .line {
                 gap: 6px;
                 margin: 5px 0;

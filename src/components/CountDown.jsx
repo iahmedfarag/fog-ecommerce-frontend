@@ -30,7 +30,6 @@ export default function CountDown({ completed, formatted }) {
 }
 
 const Wrapper = styled.div`
-
             display: flex;
             gap: 10px;
             .box {
@@ -39,9 +38,12 @@ const Wrapper = styled.div`
                 padding: 8px 0;
                 border-radius: 10px;
                 text-align: center;
+                height: fit-content;
                 h3 {
                     color: var(--black-3);
-                    font-weight: 400;
+                    font-size: 20px;
+                    font-weight: 500;
+
                 }
                 p {
                     font-size: 13px;

@@ -1,11 +1,10 @@
 import { styled } from "styled-components"
-import HeroSlider from "./HeroSlider"
-import MainPoster from "./MainPoster"
-import SmallPoster from "./SmallPoster"
+import HeroSlider from "../components/Hero/HeroSlider"
+import MainPoster from "../components/Hero/MainPoster"
+import SmallPoster from "../components/Hero/SmallPoster"
 import { nanoid } from "nanoid"
-import img1 from "../../assets/new-dualsense.jpg"
-import img2 from "../../assets/instant-cameras.jpg"
-
+import img1 from "../assets/new-dualsense.jpg"
+import img2 from "../assets/instant-cameras.jpg"
 const posters = [
     {
         id: nanoid(5),

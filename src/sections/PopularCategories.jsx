@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import CategoryCard from "./CategoryCard"
+import CategoryCard from "../components/CategoryCard"
 import Slider from "react-slick"
 import { useDispatch, useSelector } from "react-redux"
 

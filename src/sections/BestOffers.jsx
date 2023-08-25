@@ -1,8 +1,7 @@
 import { styled } from "styled-components"
 import { MdOutlineArrowForwardIos } from "react-icons/md"
-import ProductCard from "./ProductCard/ProductCard"
 import { useSelector } from "react-redux"
-
+import ProductCard from "../components/ProductCard/ProductCard"
 export default function BestOffers() {
     const { products } = useSelector((state) => state.products)
 
@@ -36,7 +35,8 @@ const Wrapper = styled.section`
         header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+
             h2 {
 
             }

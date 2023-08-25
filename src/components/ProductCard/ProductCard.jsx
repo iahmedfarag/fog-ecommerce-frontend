@@ -55,6 +55,7 @@ const Wrapper = styled.article`
     background-color: var(--white);
     padding: 10px;
     overflow: hidden;
+    z-index: 55;
     &:hover {
         transform: scale(1.01);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;   
@@ -85,7 +86,8 @@ const Wrapper = styled.article`
     }
 
     .ava {
-        margin-top: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         display: flex;
         gap: 5px;
         div {
@@ -151,19 +153,20 @@ const Wrapper = styled.article`
 
     @media(max-width: 1200px) {
         width: calc(100% / 4 - (40px / 4));
-
     }
     @media(max-width: 992px) {
-        width: calc(100% / 3 - (20px / 3));
+        width: calc(100% / 3 - (30px / 3));
 
-    }
-    @media(max-width: 768px) {
-        width: calc(100% / 2 - (10px / 2));
-    }
+}
+@media(max-width: 768px) {
+    width: calc(100% / 2 - (20px / 2));
 
-    @media(max-width: 576px) {
-        width: calc(100%);
+}
 
-    }
+@media(max-width: 576px) {
+    width: 100%;
+
+}
+
 
 `

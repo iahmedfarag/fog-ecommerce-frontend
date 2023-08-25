@@ -1,23 +1,27 @@
 import { styled } from "styled-components"
 import { MdOutlineArrowForwardIos } from "react-icons/md"
-import ProductCard from "./ProductCard/ProductCard"
 import { useSelector } from "react-redux"
-export default function NewProducts() {
+import ProductCard from "../components/ProductCard/ProductCard"
+
+export default function SpecialCategory() {
     const { products } = useSelector((state) => state.products)
-    const newProducts = products.filter((item) => item.new == true && item.bestOffer == false)
-    console.log(newProducts)
+
+
+    const bestProducts = products.filter((item) => item.subCategory.slug == "ultrabook")
+
+
     return (
         <Wrapper>
             <div className="container">
                 <header>
-                    <h2>New Products</h2>
+                    <h2>gaming pcs</h2>
                     <a href="/" className="flex">
                         <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
                     </a>
                 </header>
                 <div className="products">
                     {
-                        newProducts.map((product) => {
+                        bestProducts.map((product) => {
                             return <ProductCard key={product._id} product={product} />
                         })
                     }
@@ -33,7 +37,7 @@ const Wrapper = styled.section`
         header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             h2 {
 
             }

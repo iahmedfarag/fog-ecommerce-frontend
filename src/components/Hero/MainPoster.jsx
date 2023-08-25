@@ -1,8 +1,7 @@
 import { styled } from "styled-components"
 import img from "../../assets/logitech-aurora-headset.jpg"
 import Countdown from 'react-countdown';
-import CountDownRender from "./CountDown";
-
+import CountDownRender from "../CountDown"
 
 export default function MainPoster() {
 
