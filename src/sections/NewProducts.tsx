@@ -3,36 +3,40 @@ import { MdOutlineArrowForwardIos } from "react-icons/md"
 import ProductCard from "../components/ProductCard/ProductCard"
 import NewProductsPoster from "../components/NewProductsPoster"
 import { useAppSelector } from "../redux/hooks"
+import LoadingErrorHandler from "../components/LoadingErrorHandler"
+import { Link } from "react-router-dom"
 
 
 export default function NewProducts() {
-    const { products } = useAppSelector((state) => state.products)
-    const newProducts = products.filter((item) => item.new == true && item.bestOffer == false)
+    const { newProducts, isLoading, error } = useAppSelector((state) => state.products)
+
     const newProductsFilter = newProducts.filter((item, index) => item.new == true && item.bestOffer == false && index < 4)
 
 
     return (
-        <Wrapper>
-            <div className="container">
-                <NewProductsPoster />
-                <div className="products">
-                    <header>
-                        <h2>New Products</h2>
-                        <a href="/" className="flex">
-                            <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
-                        </a>
-                    </header>
-                    <div className="productsWrapper">
-                        {
-                            newProductsFilter.map((product) => {
-                                return <ProductCard key={product._id} product={product} />
-                            })
-                        }
+        <LoadingErrorHandler isLoading={isLoading} error={error}>
+            <Wrapper>
+                <div className="container">
+                    <NewProductsPoster />
+                    <div className="products">
+                        <header>
+                            <h2>New Products</h2>
+                            <Link to={`/`} className="flex">
+                                <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
+                            </Link>
+                        </header>
+                        <div className="productsWrapper">
+                            {
+                                newProductsFilter.map((product) => {
+                                    return <ProductCard key={product._id} product={product} />
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
+            </Wrapper>
+        </LoadingErrorHandler>
 
-            </div>
-        </Wrapper>
     )
 }
 

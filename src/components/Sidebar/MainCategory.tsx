@@ -4,6 +4,7 @@ import { SlArrowRight } from "react-icons/sl"
 import { styled } from 'styled-components'
 import { useAppSelector } from "../../redux/hooks"
 import { mainCategoryType } from '../../Types'
+import { Link } from 'react-router-dom'
 
 
 type MainCategoryPropsTypes = {
@@ -19,11 +20,11 @@ export default function MainCategory({ mainCategory }: MainCategoryPropsTypes) {
 
     return (
         <Wrapper className="mainCategory">
-            <a href={`/${mainCategory.slug}`} className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
+            <Link to={`/${mainCategory.slug}`} className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
                 <div className="icon"><img src={mainCategory.icon.secure_url} alt="" /></div>
                 <p className="text">{mainCategory.name}</p>
                 <div className="more flex"><SlArrowRight /></div>
-            </a>
+            </Link>
             <Categories mainCategorySlug={mainCategory.slug} filteredCategories={filteredCategories} subCategories={subCategories} mainCategoryHovered={mainCategoryHovered} />
         </Wrapper>
     )

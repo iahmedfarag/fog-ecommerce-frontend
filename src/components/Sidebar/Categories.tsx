@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { styled } from 'styled-components'
 import { categoryType, subCategoryType } from '../../Types'
+import { Link } from 'react-router-dom'
 
 type CategoriesPropsTypes = {
     subCategories: subCategoryType[],
@@ -20,11 +21,11 @@ export default function Categories({ subCategories, mainCategoryHovered, filtere
             {
                 filteredCategories.map(cat => {
                     return <div key={cat._id} className="category">
-                        <a key={cat._id} href={`${mainCategorySlug}/${cat.slug}`} className="title">{cat.name}</a>
+                        <Link key={cat._id} to={`${mainCategorySlug}/${cat.slug}`} className="title">{cat.name}</Link>
                         <div className="subCategories">
                             {
                                 subCategories.map(subCat => {
-                                    if (subCat.category._id === cat._id) return <a key={subCat._id} href={`/${cat.slug}/${subCat.slug}`} className="subCategory">{subCat.name}</a>
+                                    if (subCat.category._id === cat._id) return <Link key={subCat._id} to={`/${cat.slug}/${subCat.slug}`} className="subCategory">{subCat.name}</Link>
                                 })
                             }
                         </div>

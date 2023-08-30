@@ -2,31 +2,36 @@ import { styled } from "styled-components"
 import { MdOutlineArrowForwardIos } from "react-icons/md"
 import ProductCard from "../components/ProductCard/ProductCard"
 import { useAppSelector } from "../redux/hooks"
+import LoadingErrorHandler from "../components/LoadingErrorHandler"
+import { Link } from "react-router-dom"
 
 export default function BestOffers() {
-    const { products } = useAppSelector((state) => state.products)
+    const { bestProducts, isLoading, error } = useAppSelector((state) => state.products)
 
 
-    const bestProducts = products.filter((item) => item.bestOffer)
 
     return (
-        <Wrapper>
-            <div className="container">
-                <header>
-                    <h2>The Best Offers</h2>
-                    <a href="/" className="flex">
-                        <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
-                    </a>
-                </header>
-                <div className="products">
-                    {
-                        bestProducts.map((product) => {
-                            return <ProductCard key={product._id} product={product} />
-                        })
-                    }
+        <LoadingErrorHandler isLoading={isLoading} error={error}>
+
+            <Wrapper>
+                <div className="container">
+                    <header>
+                        <h2>The Best Offers</h2>
+                        <Link to={`/`} className="flex">
+                            <button className="flex">More Products <MdOutlineArrowForwardIos /></button>
+                        </Link>
+                    </header>
+                    <div className="products">
+                        {
+                            bestProducts.map((product) => {
+                                return <ProductCard key={product._id} product={product} />
+                            })
+                        }
+                    </div>
                 </div>
-            </div>
-        </Wrapper>
+            </Wrapper>
+        </LoadingErrorHandler>
+
     )
 }
 

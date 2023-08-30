@@ -1,7 +1,16 @@
+import { styled } from "styled-components"
 
 
 export default function ErrorPage() {
     return (
-        <div>there is an error...</div>
+        <Wrapper>
+            <div className="container">
+                <h1>there is an error....</h1>
+            </div>
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.section`
+    
+`

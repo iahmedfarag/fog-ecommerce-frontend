@@ -7,6 +7,7 @@ import Status from "./Status"
 import { AiOutlineCheck } from "react-icons/ai"
 import AddToCartBtn from "./AddToCartBtn"
 import { productType } from "../../Types"
+import { Link } from "react-router-dom"
 
 
 
@@ -14,12 +15,11 @@ import { productType } from "../../Types"
 
 export default function ProductCard({ product }: { product: productType }) {
 
-
     return (
         <Wrapper>
             <ProductCardImage product={product} />
-            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/${product.slug}`} className="title">{product.name}</a>
-            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/`} className="subCategory">{product.subCategory.name}</a>
+            <Link to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}/${product._id}`} className="title">{product.name}</Link>
+            <Link to={`/${product.mainCategory.slug}/${product.subCategory.slug}/`} className="subCategory">{product.subCategory.name}</Link>
             <Rate />
             <div className="ava">
                 <div className="flex"><AiOutlineCheck /></div>
@@ -28,14 +28,12 @@ export default function ProductCard({ product }: { product: productType }) {
             <div className="info">
                 <p className="price">$ {product.priceAfterDiscount}.00</p>
                 <div className="colors flex">
-                    <div className="color">
-                        <button></button>
-                        <p>grey</p>
-                    </div>
-                    <div className="color silver">
-                        <button></button>
-                        <p>silver</p>
-                    </div>
+                    {product.colors.map((color, index) => {
+                        return <div className="color" key={index}>
+                            <button style={{ backgroundColor: `${color}` }}></button>
+                            <p>{color}</p>
+                        </div>
+                    })}
                 </div>
             </div>
             <AddToCartBtn />
@@ -47,7 +45,7 @@ export default function ProductCard({ product }: { product: productType }) {
             <Status product={product} />
             <Bar />
 
-        </Wrapper>
+        </Wrapper >
     )
 }
 

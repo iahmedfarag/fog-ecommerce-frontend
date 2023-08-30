@@ -1,16 +1,18 @@
 import { styled } from "styled-components"
-import { ProductTypes } from "./ProductCard"
+import { productType } from "../../Types"
+import { Link } from "react-router-dom"
+
 
 type StatusTypes = {
-    product: ProductTypes
+    product: productType
 }
 
 export default function ProductCardImage({ product }: StatusTypes) {
     return (
         <Wrapper>
-            <a href={`/${product.mainCategory.slug}/${product.subCategory.slug}/${product.slug}`} draggable="false" className="imgWrapper">
+            <Link to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}/${product._id}`} draggable="false" className="imgWrapper">
                 <img src={product.mainImage.secure_url} draggable="false" alt="product-image" />
-            </a>
+            </Link>
         </Wrapper>
     )
 }

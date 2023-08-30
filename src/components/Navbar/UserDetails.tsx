@@ -3,6 +3,7 @@ import { GoGitCompare } from "react-icons/go"
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function UserDetails() {
     const [isOpen, setIsOpen] = useState(false)
@@ -19,30 +20,30 @@ export default function UserDetails() {
             </div>
             <ul className="flex">
                 <li>
-                    <a href="/"> <div><PiUser /></div> </a>
+                    <Link to={`/`}> <div><PiUser /></div> </Link>
                 </li>
                 <li>
-                    <a href="/">
+                    <Link to={`/`}>
                         <div><GoGitCompare /></div>
                         <p>0</p>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/">
+                    <Link to={`/`}>
                         <div><AiOutlineHeart /></div>
                         <p>0</p>
-                    </a>
+                    </Link>
                 </li>
 
             </ul>
             <div className="cart">
-                <a href="/" className="flex">
+                <Link to={`/`} className="flex">
                     <div>
                         <div className="flex"><AiOutlineShoppingCart /></div>
                         <p>0</p>
                     </div>
                     <p>$199,99,0</p>
-                </a>
+                </Link>
             </div>
         </div>
     )

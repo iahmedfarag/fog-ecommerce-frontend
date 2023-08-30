@@ -2,11 +2,12 @@ import { styled } from "styled-components"
 import CategoryCard from "../components/CategoryCard"
 import Slider from "react-slick"
 import { useAppSelector } from "../redux/hooks"
+import LoadingErrorHandler from "../components/LoadingErrorHandler"
 
 
 
 export default function PopularCategories() {
-    const { subCategories } = useAppSelector((state) => state.products)
+    const { subCategories, isLoading, error } = useAppSelector((state) => state.products)
 
     const popularSubCategories = subCategories.filter((item) => item.featured)
 
@@ -44,19 +45,21 @@ export default function PopularCategories() {
     };
 
     return (
-        <Wrapper className="popular-categories">
-            <div className="container">
-                <h2>Popular Categories</h2>
-                <div className="categories">
-                    <Slider {...settings}>
-                        {popularSubCategories.map(subCategory => {
-                            return <CategoryCard key={subCategory._id} subCategory={subCategory} />
-                        })}
-                    </Slider>
+        <LoadingErrorHandler isLoading={isLoading} error={error}>
+            <Wrapper className="popular-categories">
+                <div className="container">
+                    <h2>Popular Categories</h2>
+                    <div className="categories">
+                        <Slider {...settings}>
+                            {popularSubCategories.map(subCategory => {
+                                return <CategoryCard key={subCategory._id} subCategory={subCategory} />
+                            })}
+                        </Slider>
+                    </div>
                 </div>
-            </div>
+            </Wrapper>
+        </LoadingErrorHandler>
 
-        </Wrapper>
     )
 }
 const Wrapper = styled.section`

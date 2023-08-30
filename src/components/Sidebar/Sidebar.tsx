@@ -3,11 +3,10 @@ import { RxHamburgerMenu } from "react-icons/rx"
 import { useState } from 'react'
 import MainCategory from "./MainCategory"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import LoadingErrorHandler from "../LoadingErrorHandler"
 import { closeSidebar } from "../../redux/generalSlice"
 
 export default function Sidebar() {
-    const { isLoading, error, mainCategories } = useAppSelector((state) => state.products)
+    const { mainCategories } = useAppSelector((state) => state.products)
     const { isSidebarOpen } = useAppSelector((state) => state.general)
     const [sideBarHoverd, setSideBarHoverd] = useState(false)
     const dispatch = useAppDispatch()
@@ -23,21 +22,18 @@ export default function Sidebar() {
 
 
     return (
-        <LoadingErrorHandler isLoading={isLoading} error={error}>
-
-            <Wrapper className={`aside ${sideBarHoverd ? 'open' : ""} ${isSidebarOpen ? 'openResponive' : ''}`} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
-                <header>
-                    <div className="icon flex"><RxHamburgerMenu /></div>
-                    <p className="text">All Categories</p>
-                </header>
-                <div className="mainCategories">
-                    {
-                        mainCategories.map(mainCat => <MainCategory key={mainCat._id} mainCategory={mainCat} />)
-                    }
-                </div>
-                <div className={`layer ${isSidebarOpen && 'active'}`} onClick={() => dispatch(closeSidebar())}></div>
-            </Wrapper>
-        </LoadingErrorHandler>
+        <Wrapper className={`aside ${sideBarHoverd ? 'open' : ""} ${isSidebarOpen ? 'openResponive' : ''}`} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+            <header>
+                <div className="icon flex"><RxHamburgerMenu /></div>
+                <p className="text">All Categories</p>
+            </header>
+            <div className="mainCategories">
+                {
+                    mainCategories.map(mainCat => <MainCategory key={mainCat._id} mainCategory={mainCat} />)
+                }
+            </div>
+            <div className={`layer ${isSidebarOpen && 'active'}`} onClick={() => dispatch(closeSidebar())}></div>
+        </Wrapper>
     )
 }
 
@@ -125,11 +121,11 @@ const Wrapper = styled.aside`
         width: calc(100% - 300px);
         height: 100%;
         top: 0;
-left: 300px;
-display: none;
-&.active {
-    display: block;
-}
+        left: 300px;
+        display: none;
+        &.active {
+            display: block;
+        }
     }
 
 

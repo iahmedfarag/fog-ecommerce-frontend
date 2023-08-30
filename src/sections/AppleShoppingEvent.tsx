@@ -6,9 +6,11 @@ import Slider from "react-slick"
 import { AiFillStar } from "react-icons/ai"
 import CountDownRender from '../components/CountDown'
 import { useAppSelector } from '../redux/hooks';
+import LoadingErrorHandler from "../components/LoadingErrorHandler"
+import { Link } from 'react-router-dom';
 
 export default function AppleShoppingEvent() {
-    const { products } = useAppSelector((state) => state.products)
+    const { products, isLoading, error } = useAppSelector((state) => state.products)
 
     const appleProducts = products.filter((item) => item.brand === 'apple' || item.brand === 'acer')
 
@@ -46,43 +48,47 @@ export default function AppleShoppingEvent() {
 
 
     return (
-        <Wrapper style={{ backgroundImage: `url(${background})` }} className='event' >
-            <div className="container" >
-                <div className='up'>
-                    <div className="imgWrapper">
-                        <img src={image} alt="event img" />
+        <LoadingErrorHandler isLoading={isLoading} error={error}>
+
+            <Wrapper style={{ backgroundImage: `url(${background})` }} className='event' >
+                <div className="container" >
+                    <div className='up'>
+                        <div className="imgWrapper">
+                            <img src={image} alt="event img" />
+                        </div>
+                        <div className="content">
+                            <h2>Apple Shopping Event</h2>
+                            <h3>Hurry and get discounts on all Apple devices up to 20%</h3>
+                            <Countdown date={Date.now() + 1000002009} renderer={CountDownRender} />
+                            <button className='flex'>Go Shopping</button>
+                        </div>
                     </div>
-                    <div className="content">
-                        <h2>Apple Shopping Event</h2>
-                        <h3>Hurry and get discounts on all Apple devices up to 20%</h3>
-                        <Countdown date={Date.now() + 1000002009} renderer={CountDownRender} />
-                        <button className='flex'>Go Shopping</button>
-                    </div>
-                </div>
-                <div className="products">
-                    <Slider {...settings}>
-                        {appleProducts.map(product => {
-                            return <div className='product' key={product._id}>
-                                <a draggable={false} href={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}`} className="img">
-                                    <img draggable={false} src={product.mainImage.secure_url} alt="" />
-                                </a>
-                                <div className="content">
-                                    <a draggable={false} href={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}`} className="title">{product.name.split(" ").slice(0, 2).join(" ")}</a>
-                                    <div className="rate">
-                                        <div><AiFillStar /></div>
-                                        <div><AiFillStar /></div>
-                                        <div><AiFillStar /></div>
-                                        <div><AiFillStar /></div>
-                                        <div><AiFillStar /></div>
+                    <div className="products">
+                        <Slider {...settings}>
+                            {appleProducts.map(product => {
+                                return <div className='product' key={product._id}>
+                                    <Link draggable={false} to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}`} className="img">
+                                        <img draggable={false} src={product.mainImage.secure_url} alt="" />
+                                    </Link>
+                                    <div className="content">
+                                        <Link draggable={false} to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}`} className="title">{product.name.split(" ").slice(0, 2).join(" ")}</Link>
+                                        <div className="rate">
+                                            <div><AiFillStar /></div>
+                                            <div><AiFillStar /></div>
+                                            <div><AiFillStar /></div>
+                                            <div><AiFillStar /></div>
+                                            <div><AiFillStar /></div>
+                                        </div>
+                                        <h4 className="price">${product.price}.00</h4>
                                     </div>
-                                    <h4 className="price">${product.price}.00</h4>
                                 </div>
-                            </div>
-                        })}
-                    </Slider>
+                            })}
+                        </Slider>
+                    </div>
                 </div>
-            </div>
-        </Wrapper >
+            </Wrapper >
+        </LoadingErrorHandler>
+
     )
 }
 

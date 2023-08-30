@@ -6,6 +6,10 @@ import Navbar from "./Navbar"
 import NewProducts from "./NewProducts"
 import PopularCategories from "./PopularCategories"
 import SpecialCategory from "./SpecialCategory"
+import Bar from "./ProductDetails/Bar"
+import Product from "./ProductDetails/Product"
+import RelatedProducts from "./ProductDetails/RelatedProducts"
+import ProductReview from "./ProductDetails/ProductReview"
 
 
 export {
@@ -17,4 +21,8 @@ export {
     NewProducts,
     PopularCategories,
     SpecialCategory,
+    Bar,
+    Product,
+    RelatedProducts,
+    ProductReview
 }

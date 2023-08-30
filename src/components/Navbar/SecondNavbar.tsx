@@ -1,19 +1,23 @@
 import { styled } from "styled-components"
-import Links from "./Links"
 import UserDetails from "./UserDetails"
 import SearchForm from "./SearchForm"
+import { RxHamburgerMenu } from "react-icons/rx"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import { closeSidebar, openSidebar } from "../../redux/generalSlice"
 
 
 
 
 
 export default function SecondNavbar() {
+    const dispatch = useAppDispatch()
+    const { isSidebarOpen } = useAppSelector((state) => state.general)
 
     return (
         <Wrapper>
             <div className="container flex">
                 {/* links */}
-                <Links />
+                <button onClick={() => isSidebarOpen ? dispatch(closeSidebar()) : dispatch(openSidebar())}> <div className="flex"><RxHamburgerMenu /></div> <p>All Categories</p></button>
 
                 {/*  */}
                 <UserDetails />
@@ -30,34 +34,30 @@ const Wrapper = styled.div`
     .container {
         height: 60px;
         justify-content: space-between;
-        .navLinks {
-            gap: 20px;
-                li {
-                    &.active {
-                        background-color: var(--white);
-                        padding: 7px 10px;
-                        border-radius: 25px;
-                        a {
-                            gap: 10px;
-                        }
-                    }
-                    a {
-                        div {
-                            background-color: var(--main-blue);
-                            color: var(--white);
-                            padding: 7px;
-                            border-radius: 50%;
-                            font-size: 20px;
-                        }
-                        h4 {
-                            font-weight: 400;
-                            font-size: 15px;
-                        }
-                    }
-                }
+        > button {
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            padding: 5px 10px;
+            border-radius: 25px;
+            div {
+                font-size: 20px;
+                margin-right: 8px;
+                background-color: var(--main-blue);
+                color: var(--white);
+                padding: 5px;
+                border-radius: 50%;
+            }
+            p {
+                font-size: 14   px;
+            }
+            &:hover {
+                opacity: .7;
+            }
         }
 
         .links {
+            /* margin-left: auto; */
             gap: 30px;
 
             .currency {
@@ -172,6 +172,7 @@ const Wrapper = styled.div`
 
         form {
         width: 100%;
+        /* margin-left: 20px; */
         position: relative;
         display: none;
         input {
@@ -223,7 +224,7 @@ const Wrapper = styled.div`
 
     @media (max-width: 992px) {
         .container {
-            .navLinks {
+            > button {
                 display: none;
             }
             .links {

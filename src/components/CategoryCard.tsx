@@ -1,5 +1,6 @@
 import { styled } from "styled-components"
 import { subCategoryType } from "../Types"
+import { Link } from "react-router-dom"
 
 
 
@@ -8,7 +9,7 @@ export default function CategoryCard({ subCategory }: { subCategory: subCategory
     return (
         <Wrapper>
             <div>
-                <a href={`/${subCategory.mainCategory.slug}/${subCategory.category.slug}/${subCategory.slug}`} draggable="false">
+                <Link to={`/${subCategory.mainCategory.slug}/${subCategory.category.slug}/${subCategory.slug}`} draggable="false">
                     <div className="imgWrapper">
                         <img draggable="false" src={subCategory.image.secure_url} alt="category-image" />
                     </div>
@@ -16,7 +17,7 @@ export default function CategoryCard({ subCategory }: { subCategory: subCategory
                         <h4>{subCategory.name}</h4>
                         <p>{subCategory.productsCount} products</p>
                     </div>
-                </a>
+                </Link>
             </div>
         </Wrapper>
     )
