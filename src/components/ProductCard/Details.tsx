@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import { ProductTypes } from "./ProductCard"
+import { productType } from "../../Types"
 
 type LineTypes = {
     pKey: string,
@@ -16,7 +16,7 @@ const Line = ({ pKey, pValue }: LineTypes) => {
 // new Date(<your-date-object>.toDateString());
 
 type DetailsTypes = {
-    product: ProductTypes
+    product: productType
 }
 
 export default function Details({ product }: DetailsTypes) {
@@ -28,7 +28,7 @@ export default function Details({ product }: DetailsTypes) {
                     <Line pKey={"brand"} pValue={product.brand} />
                     <Line pKey={"model"} pValue={product.model} />
                     <Line pKey={"colors"} pValue={product.colors.toString()} />
-                    <Line pKey={"release year"} pValue={product.releaseYear.split("T")[0]} />
+                    <Line pKey={"release year"} pValue={product?.releaseYear?.split("T")[0]} />
                 </div>
 
             </div>
@@ -43,7 +43,6 @@ const Wrapper = styled.div`
     opacity: 0;
     visibility: hidden;
     z-index: 55;
-    /* padding: 10px; */
     .wrapper {
         position: absolute;
         top: 10px;
@@ -53,7 +52,6 @@ const Wrapper = styled.div`
         padding: 10px;
         padding-top: 0;
         height: 106px;
-        /* overflow-y: scroll; */
         z-index: 55;
 
         .list {

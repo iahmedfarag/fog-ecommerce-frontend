@@ -6,10 +6,8 @@ import LoadingErrorHandler from "../components/LoadingErrorHandler"
 import { Link } from "react-router-dom"
 
 export default function SpecialCategory() {
-    const { products, isLoading, error } = useAppSelector((state) => state.products)
+    const { bestProducts, isLoading, error } = useAppSelector((state) => state.products)
 
-
-    const bestProducts = products.filter((item) => item.subCategory.slug == "ultrabook")
 
 
     return (

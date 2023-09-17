@@ -1,23 +1,23 @@
 import { PiUser } from "react-icons/pi"
 import { GoGitCompare } from "react-icons/go"
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
-import { useState } from "react"
+// import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+// import { useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function UserDetails() {
-    const [isOpen, setIsOpen] = useState(false)
+    // const [isOpen, setIsOpen] = useState(false)
 
     return (
         <div className="links flex">
-            <div className="currency">
+            {/* <div className="currency">
                 <button className="flex" onClick={() => { setIsOpen(!isOpen) }}>
                     USD {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </button>
                 <ul className={`${isOpen ? "flex active" : "flex"}`}>
                     <li><button>EGP</button></li>
                 </ul>
-            </div>
+            </div> */}
             <ul className="flex">
                 <li>
                     <Link to={`/`}> <div><PiUser /></div> </Link>

@@ -4,6 +4,7 @@ import SearchForm from "./SearchForm"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { closeSidebar, openSidebar } from "../../redux/generalSlice"
+import { Link } from "react-router-dom"
 
 
 
@@ -17,7 +18,11 @@ export default function SecondNavbar() {
         <Wrapper>
             <div className="container flex">
                 {/* links */}
-                <button onClick={() => isSidebarOpen ? dispatch(closeSidebar()) : dispatch(openSidebar())}> <div className="flex"><RxHamburgerMenu /></div> <p>All Categories</p></button>
+
+                <div className="left">
+                    <button className="all-categories-btn" onClick={() => isSidebarOpen ? dispatch(closeSidebar()) : dispatch(openSidebar())}> <div className="flex"><RxHamburgerMenu /></div> <p>All Categories</p></button>
+                    <Link to={`/all-products`} className="all-products-btn">All Products</Link>
+                </div>
 
                 {/*  */}
                 <UserDetails />
@@ -34,28 +39,47 @@ const Wrapper = styled.div`
     .container {
         height: 60px;
         justify-content: space-between;
-        > button {
+        gap: 10px;
+        .left {
             display: flex;
-            align-items: center;
-            background-color: var(--white);
-            padding: 5px 10px;
-            border-radius: 25px;
-            div {
-                font-size: 20px;
-                margin-right: 8px;
-                background-color: var(--main-blue);
-                color: var(--white);
-                padding: 5px;
-                border-radius: 50%;
+            gap: 10px;
+            .all-categories-btn {
+                display: flex;
+                align-items: center;
+                background-color: var(--white);
+                padding: 5px 10px;
+                border-radius: 25px;
+                div {
+                    font-size: 20px;
+                    margin-right: 8px;
+                    background-color: var(--main-blue);
+                    color: var(--white);
+                    padding: 5px;
+                    border-radius: 50%;
+                }
+                p {
+                    font-size: 14   px;
+                }
+                &:hover {
+                    opacity: .7;
+                }
+                @media(max-width: 992px) {
+                    display: none;
+}
+
             }
-            p {
-                font-size: 14   px;
-            }
-            &:hover {
-                opacity: .7;
+            .all-products-btn {
+                padding: 10px 15px;
+                background-color: var(--white);
+                border-radius: 25px;
+                font-size: 14px;
+                &:hover {
+                    opacity: 0.7;
+                }
+
             }
         }
-
+        
         .links {
             /* margin-left: auto; */
             gap: 30px;
@@ -171,7 +195,7 @@ const Wrapper = styled.div`
         }
 
         form {
-        width: 100%;
+        flex: 1;
         /* margin-left: 20px; */
         position: relative;
         display: none;

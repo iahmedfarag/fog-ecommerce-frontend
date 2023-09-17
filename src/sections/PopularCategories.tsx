@@ -7,7 +7,7 @@ import LoadingErrorHandler from "../components/LoadingErrorHandler"
 
 
 export default function PopularCategories() {
-    const { subCategories, isLoading, error } = useAppSelector((state) => state.products)
+    const { subCategories, isLoading, error } = useAppSelector((state) => state.categories)
 
     const popularSubCategories = subCategories.filter((item) => item.featured)
 

@@ -4,7 +4,6 @@ import { SlArrowRight } from "react-icons/sl"
 import { styled } from 'styled-components'
 import { useAppSelector } from "../../redux/hooks"
 import { mainCategoryType } from '../../Types'
-import { Link } from 'react-router-dom'
 
 
 type MainCategoryPropsTypes = {
@@ -12,7 +11,7 @@ type MainCategoryPropsTypes = {
 }
 
 export default function MainCategory({ mainCategory }: MainCategoryPropsTypes) {
-    const { categories, subCategories } = useAppSelector((state) => state.products)
+    const { categories, subCategories } = useAppSelector((state) => state.categories)
     const [mainCategoryHovered, setMainCategoryHovered] = useState(false)
 
     const filteredCategories = categories.filter((cat) => cat.mainCategory._id == mainCategory._id)
@@ -20,11 +19,11 @@ export default function MainCategory({ mainCategory }: MainCategoryPropsTypes) {
 
     return (
         <Wrapper className="mainCategory">
-            <Link to={`/${mainCategory.slug}`} className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
+            <p className="content" onMouseOver={() => setMainCategoryHovered(true)} onMouseLeave={() => setMainCategoryHovered(false)}>
                 <div className="icon"><img src={mainCategory.icon.secure_url} alt="" /></div>
                 <p className="text">{mainCategory.name}</p>
                 <div className="more flex"><SlArrowRight /></div>
-            </Link>
+            </p>
             <Categories mainCategorySlug={mainCategory.slug} filteredCategories={filteredCategories} subCategories={subCategories} mainCategoryHovered={mainCategoryHovered} />
         </Wrapper>
     )
@@ -40,7 +39,7 @@ const Wrapper = styled.div`
                 align-items: center;
                 /* gap: 10px; // gap between content - icon */
                 padding: 12px 0;
-                
+                user-select: none;
                 .icon {
                     display: flex;
                     width: 40px;

@@ -1,6 +1,6 @@
 import { styled } from "styled-components"
 import ProductCardImage from "./ProductCardImage"
-import Rate from "./Rate"
+// import Rate from "./Rate"
 import Details from "./Details"
 import Bar from "./Bar"
 import Status from "./Status"
@@ -9,18 +9,21 @@ import AddToCartBtn from "./AddToCartBtn"
 import { productType } from "../../Types"
 import { Link } from "react-router-dom"
 
-
-
-
-
-export default function ProductCard({ product }: { product: productType }) {
+export default function ProductCard({ product, width, gap }: { product: productType, width?: number, gap?: number }) {
+    const minusCalc = (width?: number, gap?: number) => {
+        if (width && gap) {
+            const calc = width === 1 ? 0 : ((width - 1) * gap) / (width - 1)
+            return calc
+        }
+    }
+    const widthCalc = (width && gap) && (100 / width)
 
     return (
-        <Wrapper>
+        <Wrapper className={`product ${width === 1 && "single"}`} style={{ width: (width && gap) && `calc(${widthCalc}% - ${minusCalc(width, gap)}px` }}>
             <ProductCardImage product={product} />
             <Link to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}/${product._id}`} className="title">{product.name}</Link>
             <Link to={`/${product.mainCategory.slug}/${product.subCategory.slug}/`} className="subCategory">{product.subCategory.name}</Link>
-            <Rate />
+            {/* <Rate /> */}
             <div className="ava">
                 <div className="flex"><AiOutlineCheck /></div>
                 <p>In stock</p>
@@ -60,14 +63,16 @@ const Wrapper = styled.article`
     padding: 10px;
     overflow: hidden;
     z-index: 2;
+    
     &:hover {
         transform: scale(1.01);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;   
         overflow: visible;
-        
+        z-index: 999;
         .details {
             opacity: 1;
             visibility: visible;
+            position: relative;
         }
         .bar {
             right: 15px;
@@ -160,17 +165,12 @@ const Wrapper = styled.article`
     }
     @media(max-width: 992px) {
         width: calc(100% / 3 - (30px / 3));
-
-}
-@media(max-width: 768px) {
-    width: calc(100% / 2 - (20px / 2));
-
-}
-
-@media(max-width: 576px) {
-    width: 100%;
-
-}
-
+    }
+    @media(max-width: 768px) {
+        width: calc(100% / 2 - (20px / 2));
+    }
+    @media(max-width: 576px) {
+        width: 100%;
+    }
 
 `

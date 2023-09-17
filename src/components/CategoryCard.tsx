@@ -6,10 +6,11 @@ import { Link } from "react-router-dom"
 
 
 export default function CategoryCard({ subCategory }: { subCategory: subCategoryType }) {
+    console.log(subCategory)
     return (
         <Wrapper>
             <div>
-                <Link to={`/${subCategory.mainCategory.slug}/${subCategory.category.slug}/${subCategory.slug}`} draggable="false">
+                <Link to={`all-products?category=${subCategory.category._id}&subCategory=${subCategory._id}`} draggable="false">
                     <div className="imgWrapper">
                         <img draggable="false" src={subCategory.image.secure_url} alt="category-image" />
                     </div>

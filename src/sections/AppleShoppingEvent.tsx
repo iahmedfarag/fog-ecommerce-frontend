@@ -10,16 +10,15 @@ import LoadingErrorHandler from "../components/LoadingErrorHandler"
 import { Link } from 'react-router-dom';
 
 export default function AppleShoppingEvent() {
-    const { products, isLoading, error } = useAppSelector((state) => state.products)
+    const { eventProducts, isLoading, error } = useAppSelector((state) => state.products)
 
-    const appleProducts = products.filter((item) => item.brand === 'apple' || item.brand === 'acer')
 
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         arrows: false,
         responsive: [
             {
@@ -65,7 +64,7 @@ export default function AppleShoppingEvent() {
                     </div>
                     <div className="products">
                         <Slider {...settings}>
-                            {appleProducts.map(product => {
+                            {eventProducts.map(product => {
                                 return <div className='product' key={product._id}>
                                     <Link draggable={false} to={`/${product.mainCategory.slug}/${product.category.slug}/${product.subCategory.slug}/${product.slug}`} className="img">
                                         <img draggable={false} src={product.mainImage.secure_url} alt="" />

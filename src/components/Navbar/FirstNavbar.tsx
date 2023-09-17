@@ -43,67 +43,8 @@ const Wrapper = styled.div`
         }
     }
     //
-    form {
-        width: 50%;
-        position: relative;
-        @media (max-width: 1200px) {
-            width: 45%;
-        }
-        @media (max-width: 1100px) {
-            width: 40%;
-        }
-        @media (max-width: 1000px) {
-            width: 35%;
-        }
-        input {
-            width: 100%;
-            padding: 15px;
-            border-radius: 25px;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-        button {
-            background-color: var(--main-blue);
-            color: var(--white);
-            padding: 7px;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            border-radius: 50%;
 
-            //
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 5px;
-
-        }
-    }
     //
-    .features {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            .icon {
-                font-size: 30px;
-            }
-            .info {
-                h5 {
-                    font-size: 14px;
-                    font-weight: 500;
-                    margin-bottom: 5px;
-                }
-                p {
-                    font-size: 14px;
-                    color:var(--dark-blue)
-                }
-            }
-        }
-    }
     .menuBtn {
         display: none;
     }

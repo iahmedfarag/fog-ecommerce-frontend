@@ -10,6 +10,9 @@ import Bar from "./ProductDetails/Bar"
 import Product from "./ProductDetails/Product"
 import RelatedProducts from "./ProductDetails/RelatedProducts"
 import ProductReview from "./ProductDetails/ProductReview"
+import AllProductsBar from "./AllProducts/AllProductsBar"
+import Control from "./AllProducts/Control"
+import Products from "./AllProducts/Products"
 
 
 export {
@@ -24,5 +27,8 @@ export {
     Bar,
     Product,
     RelatedProducts,
-    ProductReview
+    ProductReview,
+    AllProductsBar,
+    Control,
+    Products
 }

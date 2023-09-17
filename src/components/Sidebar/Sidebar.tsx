@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import { closeSidebar } from "../../redux/generalSlice"
 
 export default function Sidebar() {
-    const { mainCategories } = useAppSelector((state) => state.products)
+    const { mainCategories } = useAppSelector((state) => state.categories)
     const { isSidebarOpen } = useAppSelector((state) => state.general)
     const [sideBarHoverd, setSideBarHoverd] = useState(false)
     const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ const Wrapper = styled.aside`
     position: fixed;
     left: 0px;
     top: 0;
-    z-index: 3;
+    z-index: 6;
     height: 100%;
     background-color: var(--white);
     box-shadow: rgba(137, 137, 171, 0.2) 0px 7px 29px 0px;
@@ -117,7 +117,7 @@ const Wrapper = styled.aside`
 
     .layer {
         position: fixed;
-        z-index: 3;
+        z-index: 6;
         width: calc(100% - 300px);
         height: 100%;
         top: 0;

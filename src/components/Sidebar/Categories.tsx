@@ -10,7 +10,7 @@ type CategoriesPropsTypes = {
     mainCategorySlug: string
 }
 
-export default function Categories({ subCategories, mainCategoryHovered, filteredCategories, mainCategorySlug }: CategoriesPropsTypes) {
+export default function Categories({ subCategories, mainCategoryHovered, filteredCategories }: CategoriesPropsTypes) {
     const [categoryHovered, setCategoryHovered] = useState(false)
 
 
@@ -21,11 +21,11 @@ export default function Categories({ subCategories, mainCategoryHovered, filtere
             {
                 filteredCategories.map(cat => {
                     return <div key={cat._id} className="category">
-                        <Link key={cat._id} to={`${mainCategorySlug}/${cat.slug}`} className="title">{cat.name}</Link>
+                        <p key={cat._id} className="title">{cat.name}</p>
                         <div className="subCategories">
                             {
                                 subCategories.map(subCat => {
-                                    if (subCat.category._id === cat._id) return <Link key={subCat._id} to={`/${cat.slug}/${subCat.slug}`} className="subCategory">{subCat.name}</Link>
+                                    if (subCat.category._id === cat._id) return <Link key={subCat._id} to={`/all-products?category=${cat._id}&subCategory=${subCat._id}`} className="subCategory">{subCat.name}</Link>
                                 })
                             }
                         </div>
@@ -80,6 +80,7 @@ const Wrapper = styled.div`
                         font-size: 15px;
                         padding: 5px 0;
                         margin-bottom: 2.5px;
+                        user-select: none;
                         &:hover {
                                 color: var(--main-blue);
                             }

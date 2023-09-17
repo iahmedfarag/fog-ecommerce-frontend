@@ -1,22 +1,22 @@
-export type imageType = {
+export interface imageType {
     secure_url: string,
     public_id: string,
 }
-export type mainCategoryType = {
+export interface mainCategoryType {
     _id: string,
     name: string,
     slug: string,
     icon: imageType
 }
 
-export type categoryType = {
+export interface categoryType {
     _id: string,
     name: string,
     slug: string,
     mainCategory: mainCategoryType
 }
 
-export type subCategoryType = {
+export interface subCategoryType {
     _id: string,
     name: string,
     slug: string,
@@ -27,7 +27,7 @@ export type subCategoryType = {
     category: categoryType
 }
 
-export type productType = {
+export interface productType {
     _id: string,
     name: string,
     slug: string,
@@ -35,7 +35,7 @@ export type productType = {
     brand: string,
     colors: string[],
     model: string,
-    releaseYear: Date,
+    releaseYear: string,
     serial: string,
     price: number,
     priceAfterDiscount: number,

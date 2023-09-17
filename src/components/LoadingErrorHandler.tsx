@@ -4,12 +4,13 @@ import { styled } from "styled-components"
 type LoadingErrorHandlerPropsTypes = {
     isLoading: boolean,
     error: boolean,
-    children: React.ReactNode
+    children: React.ReactNode,
+    loadingHeight?: string
 }
 
-export default function LoadingErrorHandler({ isLoading, error, children }: LoadingErrorHandlerPropsTypes) {
+export default function LoadingErrorHandler({ isLoading, error, children, loadingHeight }: LoadingErrorHandlerPropsTypes) {
     if (isLoading) {
-        return <Wrapper className="container">
+        return <Wrapper className="container" style={{ minHeight: `${loadingHeight ? loadingHeight : 'auto'}` }}>
             <div className="loading"></div>
         </Wrapper>
     }
@@ -22,7 +23,7 @@ export default function LoadingErrorHandler({ isLoading, error, children }: Load
 }
 
 const Wrapper = styled.div`
-position: relative;
+    position: relative;
     .loading{
         width: 48px;
         height: 48px;
