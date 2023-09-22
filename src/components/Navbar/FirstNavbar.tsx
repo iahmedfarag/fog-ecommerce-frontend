@@ -36,6 +36,7 @@ const Wrapper = styled.div`
     gap: 10px;
     //
     .logo {
+        user-select: none;
         a {
             img {
 

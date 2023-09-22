@@ -10,17 +10,9 @@ export default function UserDetails() {
 
     return (
         <div className="links flex">
-            {/* <div className="currency">
-                <button className="flex" onClick={() => { setIsOpen(!isOpen) }}>
-                    USD {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                </button>
-                <ul className={`${isOpen ? "flex active" : "flex"}`}>
-                    <li><button>EGP</button></li>
-                </ul>
-            </div> */}
             <ul className="flex">
                 <li>
-                    <Link to={`/`}> <div><PiUser /></div> </Link>
+                    <Link to={`/register`}> <div><PiUser /></div> </Link>
                 </li>
                 <li>
                     <Link to={`/`}>

@@ -11,6 +11,7 @@
   --red:#E22D2D;
   --green:#438E44;
   --black-3:#333;
+  --light-gray: rgb(119, 119, 119);
 }
 
 * {
@@ -41,6 +42,9 @@ a {
 ul {
   list-style: none;
 }
+li {
+  list-style: none;
+}
 .flex {
   display: flex;
   align-items: center;
@@ -57,7 +61,6 @@ ul {
 @media(max-width: 992px) {
   .container {
     padding: 0 15px;
-    
   }
 }
 @media(max-width: 768px) {
@@ -83,3 +86,5 @@ ul {
 .main-btn:hover {
   opacity: .7;
 }
+
+
