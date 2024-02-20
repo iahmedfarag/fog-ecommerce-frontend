@@ -21,7 +21,6 @@ Fog E-commerce is a full-stack e-commerce application.
 - Express.js
 - MongoDB
 
-
-https://www.linkedin.com/feed/update/urn:li:activity:7109237332767076353/
+Check out a video of fog-e-commerce [here]([https://timezonee.netlify.app/](https://www.linkedin.com/posts/ahmed-farag-16433b260_html-frontend-webdevelopment-activity-7109237332767076353-z_Mk?utm_source=share&utm_medium=member_desktop)https://www.linkedin.com/posts/ahmed-farag-16433b260_html-frontend-webdevelopment-activity-7109237332767076353-z_Mk?utm_source=share&utm_medium=member_desktop).
 
 https://www.youtube.com/watch?v=5h-Xo7G26r4
