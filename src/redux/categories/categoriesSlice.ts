@@ -1,18 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import * as types from "../../Types";
 
-import { getCategories, getMainCategories, getSubCategories, } from "./categoriesFetchFunctions";
-
+import { getCategories, getMainCategories, getSubCategories } from "./categoriesFetchFunctions";
 
 type initialStateType = {
-    mainCategories: types.mainCategoryType[],
-    categories: types.categoryType[],
-    subCategories: types.subCategoryType[],
+    mainCategories: types.mainCategoryType[];
+    categories: types.categoryType[];
+    subCategories: types.subCategoryType[];
     //
-    isLoading: true | false,
-    error: boolean,
-    errorMessage: null | string
-}
+    isLoading: true | false;
+    error: boolean;
+    errorMessage: null | string;
+};
 
 const initialState: initialStateType = {
     mainCategories: [],
@@ -21,20 +20,15 @@ const initialState: initialStateType = {
     //
     isLoading: true,
     error: false,
-    errorMessage: null
-}
-
-
-
+    errorMessage: null,
+};
 
 // ===== products slice ===== //
 
 export const categoriesSlice = createSlice({
     name: "categories",
     initialState,
-    reducers: {
-
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             // ===== get categories =====
@@ -50,7 +44,7 @@ export const categoriesSlice = createSlice({
             .addCase(getMainCategories.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = true;
-                state.errorMessage = payload as string
+                state.errorMessage = payload as string;
             })
             // ===== get categories =====
             .addCase(getCategories.pending, (state) => {
@@ -65,7 +59,7 @@ export const categoriesSlice = createSlice({
             .addCase(getCategories.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = true;
-                state.errorMessage = payload as string
+                state.errorMessage = payload as string;
             })
             // ===== get sub categories =====
             .addCase(getSubCategories.pending, (state) => {
@@ -75,19 +69,14 @@ export const categoriesSlice = createSlice({
             .addCase(getSubCategories.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.errorMessage = null;
-                state.subCategories = payload.data
+                state.subCategories = payload.data;
             })
             .addCase(getSubCategories.rejected, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = true;
-                state.errorMessage = payload as string
-            })
+                state.errorMessage = payload as string;
+            });
+    },
+});
 
-
-
-    }
-})
-
-
-
-export default categoriesSlice.reducer
+export default categoriesSlice.reducer;

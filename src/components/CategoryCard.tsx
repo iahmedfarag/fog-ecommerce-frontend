@@ -1,18 +1,21 @@
-import { styled } from "styled-components"
-import { subCategoryType } from "../Types"
-import { Link } from "react-router-dom"
-
-
-
+import { styled } from "styled-components";
+import { subCategoryType } from "../Types";
+import { Link } from "react-router-dom";
 
 export default function CategoryCard({ subCategory }: { subCategory: subCategoryType }) {
-    console.log(subCategory)
+    console.log(subCategory);
     return (
         <Wrapper>
             <div>
-                <Link to={`all-products?category=${subCategory.category._id}&subCategory=${subCategory._id}`} draggable="false">
+                <Link
+                    to={`all-products?category=${subCategory.category._id}&subCategory=${subCategory._id}`}
+                    draggable="false">
                     <div className="imgWrapper">
-                        <img draggable="false" src={subCategory.image.secure_url} alt="category-image" />
+                        <img
+                            draggable="false"
+                            src={subCategory.image.secure_url}
+                            alt="category-image"
+                        />
                     </div>
                     <div className="content">
                         <h4>{subCategory.name}</h4>
@@ -21,12 +24,12 @@ export default function CategoryCard({ subCategory }: { subCategory: subCategory
                 </Link>
             </div>
         </Wrapper>
-    )
+    );
 }
 const Wrapper = styled.article`
     a {
         &:hover img {
-        transform: scale(1.09);
+            transform: scale(1.09);
         }
         .imgWrapper {
             width: 100%;
@@ -36,17 +39,16 @@ const Wrapper = styled.article`
             margin-bottom: 10px;
             img {
                 width: 100%;
-                transition: all .5s ease;
+                transition: all 0.5s ease;
                 object-fit: cover;
                 pointer-events: none;
                 user-select: none;
-                
             }
         }
         .content {
             text-align: center;
 
-            h4{
+            h4 {
                 font-weight: 400;
                 margin-top: 5px;
                 margin-bottom: 2px;
@@ -57,6 +59,5 @@ const Wrapper = styled.article`
                 color: grey;
             }
         }
-}
-    
-`
+    }
+`;
